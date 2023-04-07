@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { HomeComponent, DisplayNestedComponent } from '../Components';
+import { Link } from 'react-router-dom';
+import { HomeComponent} from '../Components';
 
 const HomePage = () => {
 
@@ -20,7 +21,7 @@ const HomePage = () => {
     <div style={{ margin: "auto", paddingTop: "40px", width: "70%" }}>
     <HomeComponent />
     <div style={{ marginTop: "30px" }}>
-      <DisplayNestedComponent nestedObject={nestedObject} />
+      <Link to="/nested">Nested</Link>
     </div>
     </div>
   )
