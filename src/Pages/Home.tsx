@@ -27,6 +27,9 @@ const HomePage = () => {
       <div style={{ margin: "20px", display: "inline-block" }}>
         <Link to="/robotlist">Robot List</Link>
       </div>
+      <div style={{ margin: "20px", display: "inline-block" }}>
+        <Link to="/layouteffect">Use useLayoutEffect</Link>
+      </div>
     </div>
     </div>
   )
