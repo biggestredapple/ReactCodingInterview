@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { HomePage, NestedPage } from './Pages';
+import { HomePage, NestedPage, RobotListPage } from './Pages';
 
 function App() {
   return (
@@ -9,6 +9,7 @@ function App() {
       <Routes>
         <Route path='/' element={<HomePage />} />
         <Route path='/nested' element={<NestedPage />} />
+        <Route path='/robotlist' element={<RobotListPage />} />
       </Routes>
     </BrowserRouter>
   );

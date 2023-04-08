@@ -20,8 +20,13 @@ const HomePage = () => {
   return (
     <div style={{ margin: "auto", paddingTop: "40px", width: "70%" }}>
     <HomeComponent />
-    <div style={{ marginTop: "30px" }}>
-      <Link to="/nested">Nested</Link>
+    <div style={{ marginTop: "30px"}}>
+      <div style={{ margin: "20px", display: "inline-block" }}>
+        <Link to="/nested">Nested</Link>
+      </div>
+      <div style={{ margin: "20px", display: "inline-block" }}>
+        <Link to="/robotlist">Robot List</Link>
+      </div>
     </div>
     </div>
   )
