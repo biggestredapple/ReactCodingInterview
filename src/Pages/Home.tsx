@@ -29,6 +29,7 @@ const HomePage = () => {
       </div>
       <div style={{ margin: "20px", display: "inline-block" }}>
         <Link to="/layouteffect">Use useLayoutEffect</Link>
+        <Link to="/countdown">Count Down</Link>
       </div>
     </div>
     </div>
