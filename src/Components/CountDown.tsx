@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from "react"
+import { ChangeEvent, useRef, useState } from "react"
 
 interface timeType {
   min: number
@@ -14,6 +14,15 @@ const initialTime: timeType = {
 const CountDownComponent = () => {
   const [ totalSecond, setTotalSecond ] = useState(0)
   const [ time, setTime ] = useState<timeType>(initialTime)
+  const intervalRef = useRef<number | null>(null)
+  // const [  isInterval, setIsInterval ] = useState<NodeJS.Timeout | null>(null)
+
+  // const [ isInterval, setIsInterval ] = useState>(null)
+
+  if(totalSecond === 0 && intervalRef.current) {
+    clearInterval(intervalRef.current)
+    intervalRef.current = null
+  }
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTime({
@@ -26,14 +35,25 @@ const CountDownComponent = () => {
     const total = Number(time.min) * 60 + Number(time.sec);
     if(total < 0) return
     setTotalSecond(total)
+
+    if(intervalRef.current) {
+      clearInterval(intervalRef.current)
+    }
+    intervalRef.current = window.setInterval(() => setTotalSecond(prev => --prev), 1000)
+    // intervalRef.current = window.setInterval(() => setTotalSecond(prev => --prev), 1000)
+
   }
 
-  const handlePause = () => {}
+  const handlePause = () => {
+    if(intervalRef.current) clearInterval(intervalRef.current)
+    intervalRef.current = null
+  }
 
-  const handleReset = () => {}
+  const handleReset = () => {
+    intervalRef.current = window.setInterval(() => setTotalSecond(prev => --prev), 1000)
+  }
 
   const formatTime = (time: number) => {
-    console.log(time)
     const minutes = Math.floor(time / 60);
     const second = time % 60;
     return `${minutes.toString().padStart(2, "0")}:${second.toString().padStart(2, "0")}`
